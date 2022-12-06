@@ -36,9 +36,12 @@
         </aside>
         <aside class="min-h-screen w-10/12 p-5">
             <div class="flex justify-between">
-                <h2 class="text-2xl font-bold">Users</h2>
-                <x-primary-button>Create New User</x-primary-button>
+                <h2 class="text-2xl font-bold">{{ $title }}</h2>
+                @if($topRight)
+                    <span>{{ $topRight }}</span>
+                @endif
             </div>
+           {{$slot}}
         </aside>
     </body>
 </html>
