@@ -18,7 +18,9 @@ module.exports = {
             'white': '#ffffff',
             'primary': ' #F84453',
             'secondary': '#1D1D1D',
-            'base': '#222222'
+            'base': '#222222',
+            'dark-gray': '#303030',
+            'yellow': '#FFCC34'
         }
     },
 
