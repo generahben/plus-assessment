@@ -2,11 +2,14 @@
     <x-slot:title>
         Users
     </x-slot>
-    <x-slot:topRight>
-        <a href="{{ route('users.create') }}">
-            <x-primary-button>Create  New User</x-primary-button>
-        </a>
-    </x-slot:topRight>
+
+    @can('create new user')
+        <x-slot:topRight>
+            <a href="{{ route('users.create') }}">
+                <x-primary-button>Create  New User</x-primary-button>
+            </a>
+        </x-slot:topRight>
+    @endcan
 
     <form action="" class="mt-8 mb-5">
         <label for="search">User name</label> <br>
@@ -40,43 +43,30 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="bg-dark-gray">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                    <a class="firstNameStyle" href="{{ route('users.show', 2) }}">Joe</a>
-                </th>
-                <td class="py-4 px-6">
-                    Soap
-                </td>
-                <td class="py-4 px-6">
-                    joe@soap.com
-                </td>
-                <td class="py-4 px-6">
-                    Admin
-                </td>
-                <td class="py-4 px-6">
-                    28 Sep 2021
-                </td>
-            </tr>
-
-            <tr class="bg-dark-gray">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                    <a class="firstNameStyle" href="">Joe</a>
-                </th>
-                <td class="py-4 px-6">
-                    Soap
-                </td>
-                <td class="py-4 px-6">
-                    joe@soap.com
-                </td>
-                <td class="py-4 px-6">
-                    Admin
-                </td>
-                <td class="py-4 px-6">
-                    28 Sep 2021
-                </td>
-            </tr>
+                @foreach($users as $user)
+                    <tr class="bg-dark-gray">
+                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                            <a class="firstNameStyle" href="{{ route('users.show', 2) }}">{{$user->first_name}}</a>
+                        </th>
+                        <td class="py-4 px-6">
+                            {{$user->last_name}}
+                        </td>
+                        <td class="py-4 px-6">
+                            {{$user->email}}
+                        </td>
+                        <td class="py-4 px-6">
+                            @foreach($user->userRoles as $userRole)
+                                {{ $userRole->role->name }}
+                            @endforeach
+                        </td>
+                        <td class="py-4 px-6">
+                            {{$user->created_at->format('d M Y')}}
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
+        {{ $users->links('vendor.pagination.tailwind') }}
     </div>
 
 </x-app-layout>

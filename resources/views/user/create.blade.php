@@ -2,9 +2,11 @@
     <x-slot:goBack>
         <a href="{{ route('users.index') }}">Back to Users</a>
     </x-slot:goBack>
+
     <x-slot:title>
-    Create New User
+        Create New User
     </x-slot>
+
 
     <div class="bg-dark-gray p-8 mt-8">
         <h4 class="text-xl mb-8">New User Details</h4>

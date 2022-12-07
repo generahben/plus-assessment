@@ -37,6 +37,17 @@
                             Pages
                         </a>
                     </li>
+
+                    <li class="text-white text-secondary w-full px-2 py-1 text-left mt-4">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{route('logout')}}" class="flex justify-items-center items-center" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                Logout
+                            </a>
+                        </form>
+
+                    </li>
                 </ul>
             </nav>
 
