@@ -12,7 +12,11 @@
 
     }
 
-    a {
+    .firstNameStyle {
         @apply text-yellow underline decoration-dotted
+    }
+
+    .plus-input {
+        @apply bg-transparent border-0 border-b border-b-2 pl-0 w-full mb-5 focus:ring-0 focus:border-yellow
     }
 }
